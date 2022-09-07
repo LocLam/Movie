@@ -1,0 +1,118 @@
+.img-box {
+  width: 250px;
+  height: 170px;
+  border-radius: 1.5rem;
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  &:hover {
+    .current-img {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.current-img {
+  transform: scale(1);
+  transition: 0.5s ease-in-out;
+}
+
+.blur {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(27, 27, 27, 0.7);
+  position: absolute;
+  top: 0;
+  display: none;
+  transition: 0.5s;
+  z-index: 999;
+}
+
+.img-box:hover {
+  .blur {
+    display: block;
+  }
+}
+
+.btn-play-now {
+  background-color: var(--color-green);
+}
+
+.ribbon {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+
+  span {
+    position: absolute;
+    display: block;
+    width: 225px;
+    padding: 2px 0;
+    background-color: var(--color-green);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  &::after, &::before {
+    position: absolute;
+    z-index: -1;
+    content: "";
+    display: block;
+    border: 5px solid var(--color-green);
+  }
+}
+
+
+.ribbon-top-right {
+  top: -10px;
+  right: -10px;
+}
+.ribbon-top-right::before,
+.ribbon-top-right::after {
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+.ribbon-top-right::before {
+  top: 0;
+  left: 0;
+}
+.ribbon-top-right::after {
+  bottom: 0;
+  right: 0;
+}
+.ribbon-top-right span {
+  left: -25px;
+  top: 30px;
+  transform: rotate(45deg);
+}
+
+/* top left*/
+.ribbon-top-left {
+  top: -10px;
+  left: -10px;
+}
+.ribbon-top-left::before,
+.ribbon-top-left::after {
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+.ribbon-top-left::before {
+  top: 0;
+  right: 0;
+}
+.ribbon-top-left::after {
+  bottom: 0;
+  left: 0;
+}
+.ribbon-top-left span {
+  right: -25px;
+  top: 30px;
+  transform: rotate(-45deg);
+}

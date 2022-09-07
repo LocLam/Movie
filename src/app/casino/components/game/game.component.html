@@ -1,0 +1,43 @@
+<div class="img-box position-relative overflow-hidden border">
+  <ng-container
+    *ngIf="(game.categories | ribbonLabel).length === 2; else oneRibbon"
+  >
+    <ng-container>
+      <div class="ribbon ribbon-top-right">
+        <span>
+          {{ (game.categories | ribbonLabel)[0] }}
+        </span>
+      </div>
+
+      <div class="ribbon ribbon-top-left">
+        <span>
+          {{ (game.categories | ribbonLabel)[1] }}
+        </span>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <ng-template #oneRibbon>
+    <div
+      class="ribbon ribbon-top-right"
+      *ngIf="(game.categories | ribbonLabel).length > 0"
+    >
+      <span> {{ (game.categories | ribbonLabel)[0] }}</span>
+    </div>
+  </ng-template>
+
+  <img [src]="game.image" class="current-img" />
+
+  <div class="blur">
+    <div
+      class="d-flex flex-column justify-content-between align-items-center h-100"
+    >
+      <div>
+        <button class="btn btn-play-now">PLAY NOW</button>
+      </div>
+      <div class="name">
+        {{ game.name }}
+      </div>
+    </div>
+  </div>
+</div>

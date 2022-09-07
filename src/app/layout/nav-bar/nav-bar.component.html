@@ -1,0 +1,55 @@
+<div class="navbar position-fixed w-100" *ngIf="navbarData && orders">
+  <nav class="navbar navbar-expand-lg nav-expand-color">
+    <div class="container-fluid px-0">
+      <a class="navbar-brand"></a>
+      <button
+        class="navbar-toggler nav-expand-color menu-btn"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 menu-item">
+          <li class="nav-item" *ngFor="let item of navbarData"  [routerLinkActive]="['bg-green']">
+            <a
+              aria-current="page"
+              routerLink="/{{ item.href }}"
+              [routerLinkActive]="['bg-green']"
+              class="nav-link text-center text-uppercase fw-normal list-unstyled text-decoration-none px-4 nav-info"
+            >
+              {{ item.label }}
+            </a>
+          </li>
+          <li class="nav-item dropdown" *ngIf="orders && orders.length > 0">
+            <a
+              class=""
+              class="nav-link dropdown-toggle text-uppercase fw-normal list-unstyled text-decoration-none nav-info"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Orders
+            </a>
+            <ul class="dropdown-menu">
+              <li *ngFor="let item of orders">
+                <a
+                  aria-current="page"
+                  [routerLink]="[item.href]"
+                  [routerLinkActive]="['bg-green']"
+                  class="nav-link text-uppercase fw-normal list-unstyled text-decoration-none nav-info"
+                >
+                  {{ item.label }}
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>

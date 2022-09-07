@@ -1,0 +1,17 @@
+$primary: #900;
+$enable-shadows: true;
+$prefix: "mo-";
+
+@import "~node_modules/bootstrap/scss/bootstrap";
+
+@import "./variables";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, Arial, Helvetica, "Droid Sans", sans-serif;
+  overflow-x: hidden;
+}
