@@ -17,7 +17,6 @@
 }
 
 .app-label {
-  margin-top: 32px;
   color: #fff;
   font-size: 2.5em;
   font-family: "Pacifico", cursive;
@@ -31,7 +30,7 @@
 }
 
 .app-logo {
-  background-image: url("/assets/jackpo.jpg");
+  background-image: url("/assets/movie.png");
   background-repeat: no-repeat;
   max-width: 100%;
   background-position: center;
@@ -40,6 +39,6 @@
   height: 300px;
 }
 
-.bg-green {
-  color: var(--color-green);
+.bg-red {
+  color: var(--color-red);
 }
