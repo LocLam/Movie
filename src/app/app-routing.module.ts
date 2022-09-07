@@ -10,6 +10,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./casino/casino.module').then((m) => m.CasinoModule),
   },
+  {
+    path: 'videos',
+    component: MainLayoutComponent,
+    loadChildren: () =>
+      import('./videos/videos.module').then((m) => m.VideosModule),
+  },
+  
   { path: '', redirectTo: 'top', pathMatch: 'prefix' },
   { path: '**', component: PageNotFoundComponent },
 ];
