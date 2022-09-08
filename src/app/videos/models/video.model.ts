@@ -2,12 +2,13 @@ export interface Video {
   id?: string;
   name: string;
   description?: string;
-  url: string;
+  url: any;
   sharedBy?: User;
 }
 
 export interface User {
-  id: string;
+  id?: string;
   email?: string;
-  name: string
+  name?: string;
+  password?: string;
 }

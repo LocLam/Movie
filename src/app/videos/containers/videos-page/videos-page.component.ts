@@ -9,9 +9,9 @@ import { Video } from '../../models/video.model';
 export class VideosPageComponent implements OnInit {
   videos: Array<Video> = [
     {
-      name: 'Khong Phai Dang Vua dau',
-      description: 'Description khong Phai Dang Vua dau',
-      url: 'https://www.youtube.com/watch?v=Xvhfy_9pNBI',
+      name: 'Hãy trao cho anh',
+      description: 'Description Hãy trao cho anh',
+      url: 'https://youtu.be/knW7-x7Y7RE',
       sharedBy: {
         id: '123',
         email: 'lamloc@gmail.com',
@@ -19,9 +19,9 @@ export class VideosPageComponent implements OnInit {
       },
     },
     {
-      name: 'Anh sai roi',
-      description: 'Description anh sai roi',
-      url: 'https://www.youtube.com/watch?v=F4htBhP1qUo&list=PLMZyn4ePUSpIv5S83-_OJ1UFsm_vLbjPE&index=3',
+      name: 'Chạy ngay đi',
+      description: 'Description Chạy ngay đi',
+      url: 'https://www.youtube.com//embed?v=32sYGCOYJUM&ab_channel=S%C6%A1nT%C3%B9ngM-TPOfficial',
       sharedBy: {
         id: '1234',
         email: 'abc@gmail.com',
@@ -29,13 +29,23 @@ export class VideosPageComponent implements OnInit {
       },
     },
     {
-      name: 'Chac ai do se ve',
-      description: 'Description Chac ai do se ve',
-      url: 'https://www.youtube.com/watch?v=F4htBhP1qUo&list=PLMZyn4ePUSpIv5S83-_OJ1UFsm_vLbjPE&index=3',
+      name: 'CHƯA QUÊN NGƯỜI YÊU CŨ | HÀ NHI',
+      description: 'Description CHƯA QUÊN NGƯỜI YÊU CŨ | HÀ NHI',
+      url: 'https://www.youtube.com/watch?v=6fIj4UwdSYo&ab_channel=H%C3%A0NhiOfficial',
       sharedBy: {
         id: '1234',
         email: 'abc@gmail.com',
         name: 'abc',
+      },
+    },
+    {
+      name: 'Waiting for you',
+      description: 'Description Waiting for you',
+      url: 'https://youtu.be/CHw1b_1LVBA',
+      sharedBy: {
+        id: '123',
+        email: 'lamloc@gmail.com',
+        name: 'Lam Loc',
       },
     },
   ];

@@ -1,0 +1,25 @@
+<div class="card d-flex justify-content-center align-items-center">
+  <div class="card-body">
+    <div class="title mb-4">Share a Youtube movie</div>
+    <form [formGroup]="form" class="container">
+      <div class="mb-2 row">
+        <label for="staticEmail" class="col-form-label">Youtube URL:</label>
+        <div class="col col-md-10">
+          <input type="text" class="form-control" formControlName="url" />
+        </div>
+      </div>
+      <div class="d-flex justify-content-end align-items-center mt-4">
+        <button type="button" class="btn button bg-red px-5 mx-4">Share</button>
+
+        <button
+          type="button"
+          class="btn button button-cancel bg-light"
+          routerLink="/videos"
+          (click)='onShare()'
+        >
+          Back to list
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
