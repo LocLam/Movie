@@ -8,6 +8,12 @@ const routes: Routes = [
   {
     path: '',
     component: VideosPageComponent,
+    // children: [
+    //   {
+    //     path: 'share',
+    //     component: ShareLinkComponent,
+    //   },
+    // ]
   },
   {
     path: 'share',

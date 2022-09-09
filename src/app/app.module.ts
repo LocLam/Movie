@@ -13,13 +13,13 @@ import {HttpClientModule} from '@angular/common/http';
 import {LayoutModule} from './layout/layout.module';
 
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
-import {environment} from '../environments/environment'; // Angular CLI environment
+import {environment} from '../environments/environment';
 import {StoreModule, ActionReducer, MetaReducer} from '@ngrx/store';
 import {ROOT_REDUCERS} from './store/reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { CasinoEffects } from './casino/store/effects/casino.effect';
 import { SplashScreenComponent } from './splash-screen/splash-screen.component';
-// import { AngularFireModule } from '@angular/fire';
+import { VideoEffects } from './videos/store/effect';
 
 export function debug(reducer: ActionReducer<any>): ActionReducer<any> {
   return function (state, action) {
@@ -50,7 +50,7 @@ export const metaReducers: MetaReducer<any>[] = [debug];
         autoPause: true,
     }),
     EffectsModule.forRoot([CasinoEffects]),
-    // AngularFireModule.initializeApp(environment.firebaseConfig)
+    EffectsModule.forRoot([VideoEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

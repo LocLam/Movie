@@ -22,7 +22,6 @@ export class NavBarComponent implements OnInit {
     private router: Router
   ) {
     router.events.subscribe((val: any) => {
-      console.log('val: ', val);
       this.urlActive = val?.url;
   });
 

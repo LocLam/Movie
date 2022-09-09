@@ -19,9 +19,7 @@ export const shareVideo = createAction(
   props<{ video: Video }>()
 );
 
-export const shareVideoSuccess = createAction(
-  '[VIDEOS] Share Videos Success',
-);
+export const shareVideoSuccess = createAction('[VIDEOS] Share Videos Success');
 
 export const shareVideoFail = createAction(
   '[VIDEOS] Share Videos Fail',

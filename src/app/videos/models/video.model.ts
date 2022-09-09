@@ -3,7 +3,7 @@ export interface Video {
   name: string;
   description?: string;
   url: any;
-  sharedBy?: User;
+  sharedBy?: string;
 }
 
 export interface User {

@@ -1,7 +1,7 @@
 <div class="navbar position-fixed w-100">
   <nav class="navbar navbar-expand-lg nav-expand-color">
     <div class="container-fluid px-0">
-      <div class="d-flex justify-content-start align-items-center cursor-event" routerLink="/videos">
+      <div class="d-flex justify-content-start align-items-center cursor-event" routerLink="/">
         <img class="logo" src="/assets/movie.png" />
         <a class="d-none d-sm-block navbar-brand">Share Youtube Videos</a>
       </div>
@@ -47,8 +47,8 @@
               <button
                 type="button"
                 class="btn button bg-red"
-                routerLink="/videos/share"
-                [ngClass]="{'d-none': urlActive === '/videos/share'}"
+                routerLink="/share"
+                [ngClass]="{'d-none': urlActive === '/share'}"
               >
                 Share a movie
               </button>

@@ -11,7 +11,7 @@ const routes: Routes = [
   //     import('./casino/casino.module').then((m) => m.CasinoModule),
   // },
   {
-    path: 'videos',
+    path: '',
     component: MainLayoutComponent,
     loadChildren: () =>
       import('./videos/videos.module').then((m) => m.VideosModule),
