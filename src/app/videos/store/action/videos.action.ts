@@ -6,7 +6,7 @@ export const getVideos = createAction('[VIDEOS] Get Videos');
 
 export const getVideosSuccess = createAction(
   '[VIDEOS] Get Videos Success',
-  props<{ videos: Array<Video> }>()
+  props<{ videos: Array<any> }>()
 );
 
 export const getVideosFail = createAction(
@@ -16,12 +16,27 @@ export const getVideosFail = createAction(
 
 export const shareVideo = createAction(
   '[VIDEOS] Share Videos',
-  props<{ video: Video }>()
+  props<{ urlId: string }>()
 );
 
-export const shareVideoSuccess = createAction('[VIDEOS] Share Videos Success');
+export const shareVideoSuccess = createAction('[VIDEOS] Share Videos Success',   props<{ message: string }>());
 
 export const shareVideoFail = createAction(
   '[VIDEOS] Share Videos Fail',
+  props<{ error: any }>()
+);
+
+export const getVideosYT = createAction(
+  '[VIDEOS] Get Videos YT',
+  props<{ videoIds: Array<string> }>()
+);
+
+export const getVideosYTSuccess = createAction(
+  '[VIDEOS] Get Videos YT Success',
+  props<{ videoYt: Array<Video> }>()
+);
+
+export const getVideosYTFail = createAction(
+  '[VIDEOS] Get Videos YT Fail',
   props<{ error: any }>()
 );

@@ -1,0 +1,34 @@
+.shared-by-video {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.title-content {
+  width: 120px;
+}
+
+.title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.description {
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.iframe {
+  width: 420px;
+  height: 230px;
+}
+
+@media only screen and (max-width: 768px) {
+  .iframe {
+    width: 100%;
+    height: 180px;
+  }
+}

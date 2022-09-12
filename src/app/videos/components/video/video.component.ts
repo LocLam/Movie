@@ -14,7 +14,7 @@ import { Video } from '../../models/video.model';
   styleUrls: ['./video.component.scss'],
 })
 export class VideoComponent implements OnInit, OnChanges {
-  @Input() video: Video | undefined;
+  @Input() video: any;
   constructor() {}
   ngOnChanges(changes: SimpleChanges): void {
     if (changes && this.video) {

@@ -1,3 +1,18 @@
+<div class="container">
+  <div
+    class="alert alert-success notify d-flex justify-content-bettween align-items-center alert-dismissible"
+    *ngIf="message$ | async"
+    role="alert"
+  >
+    <div>{{ message$ | async }}</div>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+</div>
 <div class="card d-flex justify-content-center align-items-center">
   <div class="card-body">
     <div class="title mb-4">Share a Youtube movie</div>
@@ -6,16 +21,30 @@
         <label for="staticEmail" class="col-form-label">Youtube URL:</label>
         <div class="col col-md-10">
           <input type="text" class="form-control" formControlName="url" />
+          <div *ngIf="url?.touched && url?.errors">
+            <div class="errors" *ngIf="url?.errors?.['required']">
+              Youtube URL required.
+            </div>
+            <div class="errors" *ngIf="url?.errors?.['pattern']">
+              Invalid Youtube URL
+            </div>
+          </div>
         </div>
       </div>
       <div class="d-flex justify-content-end align-items-center mt-4">
-        <button type="button" class="btn button bg-red px-5 mx-4">Share</button>
+        <button
+          type="button"
+          class="btn button bg-red px-5 mx-4"
+          (click)="onShare()"
+          [disabled]="(isLoading$ | async) || form.invalid"
+        >
+          Share
+        </button>
 
         <button
           type="button"
           class="btn button button-cancel bg-light"
           routerLink="/"
-          (click)='onShare()'
         >
           Back to list
         </button>

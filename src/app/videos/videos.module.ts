@@ -9,8 +9,8 @@ import { components } from './components';
 import { SafePipe } from './pipes/safe.pipe';
 
 @NgModule({
-  declarations: [containers, components, SafePipe],
-  imports: [CommonModule, VideoRoutingModule, ReactiveFormsModule, FormsModule],
+  declarations: [containers, components, SafePipe,],
+  imports: [CommonModule, VideoRoutingModule, ReactiveFormsModule, FormsModule ],
   providers: [VideoService],
 })
 export class VideosModule {}

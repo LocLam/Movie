@@ -15,6 +15,8 @@ import {
 import { from, of } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { getVideos } from './videos/store/action';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { YoutubeService } from './videos/services/youtube.service';
 
 @Component({
   selector: 'app-root',
@@ -28,7 +30,7 @@ export class AppComponent {
   db = getFirestore(this.app);
   // docRef = doc(this.db, 'users');
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private spinner: NgxSpinnerService, private youTubeService: YoutubeService) {
     // this.addDoc();
     // this.getDoc();
   }

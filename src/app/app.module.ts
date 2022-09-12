@@ -51,6 +51,7 @@ export const metaReducers: MetaReducer<any>[] = [debug];
     }),
     EffectsModule.forRoot([CasinoEffects]),
     EffectsModule.forRoot([VideoEffects]),
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

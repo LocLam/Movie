@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 
 import { filter, from, map, Observable } from 'rxjs';
 import { initializeApp } from 'firebase/app';
-import { environment } from 'src/environments/environment';
-
 import {
   collection,
   getFirestore,
   getDocs,
   QuerySnapshot,
+  addDoc,
 } from 'firebase/firestore';
+
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -38,5 +39,16 @@ export class VideoService {
         return data;
       })
     );
+  }
+
+  shareVideo(url: any): Observable<any> {
+    console.log('urlId service', url);
+    
+    const documents = addDoc(collection(this.firestoreDB, this.collectionName), {
+      urlId: url.urlId,
+      sharedBy: 'lamloc.fe@gmail.com'
+    });
+
+    return from(documents);
   }
 }
