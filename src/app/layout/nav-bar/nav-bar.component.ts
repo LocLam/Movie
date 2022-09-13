@@ -2,9 +2,20 @@ import { Component, OnInit } from '@angular/core';
 
 import { select, Store } from '@ngrx/store';
 
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { selectIsLoading } from '../store/selector/auth.selector';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import {
+  getListUser,
+  signIn,
+  signOut,
+  signUp,
+} from 'src/app/auth/store/action';
+import { User } from 'src/app/videos/models/video.model';
+import {
+  selectIsLoading,
+  selectUser,
+  selectUsers,
+} from 'src/app/auth/store/selector/auth.selector';
 
 @Component({
   selector: 'app-nav-bar',
@@ -13,9 +24,24 @@ import { Router } from '@angular/router';
 })
 export class NavBarComponent implements OnInit {
   isLoading$ = this.store.pipe(select(selectIsLoading));
+  users$ = this.store.pipe(select(selectUsers));
+  user$ = this.store.pipe(select(selectUser));
 
   form!: FormGroup;
   urlActive = '';
+  users!: Array<User>;
+  user!: any;
+
+  emailPattern =
+    "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$";
+  get email() {
+    return this.form.get('email');
+  }
+
+  get password() {
+    return this.form.get('password');
+  }
+
   constructor(
     private store: Store,
     private fb: FormBuilder,
@@ -23,20 +49,65 @@ export class NavBarComponent implements OnInit {
   ) {
     router.events.subscribe((val: any) => {
       this.urlActive = val?.url;
-  });
-
+    });
+    this.store.dispatch(getListUser());
     this.buildForm();
+    this.getDataFromLocalStorage();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.users$.subscribe((users: Array<User>) => {
+      this.users = users;
+    });
+
+    this.user$.subscribe((user: User | null) => {
+      this.user = user;
+    });
+  }
   buildForm() {
     this.form = this.fb.group({
-      email: '',
-      password: '',
+      email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
+      password: ['', [Validators.required]],
     });
   }
 
   onSubmit() {
-    console.log('form.value: ', this.form.value);
+    if (this.form.invalid) {
+      return;
+    }
+    const user = {
+      email: this.form.value.email,
+      password: this.form.value.password,
+    };
+    console.log('user form', user);
+    const userSelected = this.users.find(
+      (item: User) => item.email === user.email
+    );
+
+    if (!userSelected) {
+      this.store.dispatch(signUp({ user }));
+    }
+
+    if (userSelected) {
+      if (userSelected.password === user.password) {
+        this.store.dispatch(signIn({ user: userSelected }));
+      } else {
+        alert('Password is incorrect!!!');
+      }
+    }
+  }
+
+  getDataFromLocalStorage() {
+    let user: any = localStorage.getItem('user');
+    if (user) {
+      this.user = JSON.parse(user);
+      console.log('user', this.user);
+      this.store.dispatch(signIn({ user: this.user }));
+    }
+  }
+
+  onLogout() {
+    localStorage.removeItem('user');
+    this.store.dispatch(signOut());
   }
 }

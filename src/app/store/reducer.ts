@@ -5,14 +5,14 @@ import {routerReducer, RouterReducerState} from '@ngrx/router-store';
 
 import * as fromCasino from '../casino/store/reducers';
 import * as fromVideos from '../videos/store/reducer';
-import * as fromUser from '../layout/store/reducer';
+import * as fromUser from '../auth/store/reducer';
 
 
 export interface AppState {
   router: RouterReducerState;
   casino: fromCasino.CasinoState,
   videos: fromVideos.VideoState,
-  user: fromUser.UserState,
+  users: fromUser.AuthState,
 }
 
 export const ROOT_REDUCERS = new InjectionToken<ActionReducerMap<AppState, Action>>('Root reducers token', {
@@ -20,7 +20,7 @@ export const ROOT_REDUCERS = new InjectionToken<ActionReducerMap<AppState, Actio
     router: routerReducer,
     casino: fromCasino.casinoReducer,
     videos: fromVideos.videoReducer,
-    user: fromUser.userReducer,
+    users: fromUser.authReducer,
   }),
 });
 

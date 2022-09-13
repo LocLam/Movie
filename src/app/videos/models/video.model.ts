@@ -4,6 +4,7 @@ export interface Video {
   description?: string;
   url: any;
   sharedBy?: string;
+  date?: string;
 }
 
 export interface User {

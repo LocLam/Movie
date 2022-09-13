@@ -1,7 +1,6 @@
-<div class="container">
+<div class="container" *ngIf="message$ | async">
   <div
     class="alert alert-success notify d-flex justify-content-bettween align-items-center alert-dismissible"
-    *ngIf="message$ | async"
     role="alert"
   >
     <div>{{ message$ | async }}</div>
@@ -19,7 +18,7 @@
     <form [formGroup]="form" class="container">
       <div class="mb-2 row">
         <label for="staticEmail" class="col-form-label">Youtube URL:</label>
-        <div class="col col-md-10">
+        <div class="col col-md-12">
           <input type="text" class="form-control" formControlName="url" />
           <div *ngIf="url?.touched && url?.errors">
             <div class="errors" *ngIf="url?.errors?.['required']">
@@ -38,7 +37,16 @@
           (click)="onShare()"
           [disabled]="(isLoading$ | async) || form.invalid"
         >
-          Share
+          <div class="d-flex justify-content-center align-items-center">
+            <div
+              class="spinner-grow text-primary"
+              role="status"
+              *ngIf="isLoading$ | async"
+            >
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <div>Share</div>
+          </div>
         </button>
 
         <button

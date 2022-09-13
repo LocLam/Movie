@@ -129,3 +129,57 @@ $jackpot-white: var(--color-white);
 .cursor-event {
   cursor: pointer;
 }
+
+.user {
+  font-size: 14px;
+  color: var(--color-light-grey);
+}
+
+.button-logout {
+  color: var(--color-red);
+  background-color: var(--color-light-grey);
+  border: 1px solid var(--color-red);
+  transition: 0.3s;
+  &:hover {
+    color: var(--color-red);
+  }
+}
+
+.errors {
+  font-size: 12px;
+  padding-top: 0.5rem;
+  color: var(--color-light-grey);
+}
+
+.input-control-email {
+  position: relative;
+
+  .error-content-email {
+    position: absolute;
+    top: 30px;
+    left: 0px;
+  }
+}
+
+.input-control-password {
+  position: relative;
+
+  .error-content-password {
+    position: absolute;
+    top: 30px;
+    left: 0px;
+  }
+}
+
+.errors {
+  font-size: 12px;
+  padding-top: 0.5rem;
+  color: var(--color-red);
+}
+
+.text-primary {
+  color: var(--color-red);
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5rem;
+}

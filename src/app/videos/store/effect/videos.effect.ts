@@ -26,7 +26,6 @@ export class VideoEffects {
             if (videoIds && videoIds.length > 0) {
             }
             this.store.dispatch(getVideosYT({ videoIds }));
-            // return VideoActions.getVideosYT({ videoIds });
             return VideoActions.getVideosSuccess({ videos });
           }),
           catchError((error) => {
@@ -36,6 +35,7 @@ export class VideoEffects {
       )
     )
   );
+  
   shareVideos$ = createEffect(() =>
     this.actions$.pipe(
       ofType(VideoActions.shareVideo),
@@ -58,8 +58,6 @@ export class VideoEffects {
       mergeMap((action: any) =>
         this.yt.getVideosForChanel(action.videoIds).pipe(
           map((videos: any) => {
-            console.log('video', videos);
-
             return VideoActions.getVideosYTSuccess({ videoYt: videos.items });
           }),
           catchError((error) => {

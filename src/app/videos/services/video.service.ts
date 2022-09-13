@@ -41,12 +41,13 @@ export class VideoService {
     );
   }
 
-  shareVideo(url: any): Observable<any> {
-    console.log('urlId service', url);
+  shareVideo(data: any ): Observable<any> {
+    console.log('data', data);
     
     const documents = addDoc(collection(this.firestoreDB, this.collectionName), {
-      urlId: url.urlId,
-      sharedBy: 'lamloc.fe@gmail.com'
+      urlId: data.urlId,
+      sharedBy: data.user.email,
+      date: new Date()
     });
 
     return from(documents);

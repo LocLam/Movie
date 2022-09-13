@@ -1,5 +1,5 @@
 .shared-by-video {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
 }
 
@@ -19,6 +19,7 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 13px;
 }
 
 .iframe {
@@ -28,7 +29,12 @@
 
 @media only screen and (max-width: 768px) {
   .iframe {
-    width: 100%;
+    width: 400px;
     height: 180px;
   }
+}
+
+.reaction {
+  font-size: 13px;
+  color: var(--color-red);
 }

@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { select, Store } from '@ngrx/store';
+import { selectUser } from 'src/app/auth/store/selector';
+import { User } from '../../models/video.model';
 import { shareVideo } from '../../store/action';
 import {
   selectIsLoading,
@@ -17,10 +19,10 @@ import {
 export class ShareLinkComponent implements OnInit {
   isLoading$ = this.store.pipe(select(selectIsLoading));
   message$ = this.store.pipe(select(selectMessageSharedVideosYT));
-
+  user$ = this.store.pipe(select(selectUser));
   urlPattern = '^(http(s)?://)?((w){3}.)?youtu(be|.be)?(.com)?/.+';
   form!: FormGroup;
-
+  user!: any;
   get url() {
     return this.form.get('url');
   }
@@ -32,7 +34,11 @@ export class ShareLinkComponent implements OnInit {
     this.buildForm();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.user$.subscribe((user: User | null) => {
+      this.user = user;
+    });
+  }
 
   buildForm() {
     this.form = this.fb.group({
@@ -43,7 +49,7 @@ export class ShareLinkComponent implements OnInit {
   onShare() {
     const urlId: any = this.youtube_parser(this.form.value.url);
     if (urlId) {
-      this.store.dispatch(shareVideo({ urlId }));
+      this.store.dispatch(shareVideo({ urlId, user: this.user }));
     }
   }
 

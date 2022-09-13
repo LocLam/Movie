@@ -1,7 +1,10 @@
 <div class="navbar position-fixed w-100">
   <nav class="navbar navbar-expand-lg nav-expand-color">
     <div class="container-fluid px-0">
-      <div class="d-flex justify-content-start align-items-center cursor-event" routerLink="/">
+      <div
+        class="d-flex justify-content-start align-items-center cursor-event"
+        routerLink="/"
+      >
         <img class="logo" src="/assets/movie.png" />
         <a class="d-none d-sm-block navbar-brand">Share Youtube Videos</a>
       </div>
@@ -17,40 +20,71 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form [formGroup]="form" class="my-4 sm-my-0 container">
-          <div class="row d-flex flex-column flex-md-row justify-content-end align-items-center">
-            <div class="col col-md-4 px-0">
+        <form
+          [formGroup]="form"
+          class="my-4 sm-my-0 container"
+          *ngIf="!user; else login"
+        >
+          <div
+            class="row d-flex flex-column flex-md-row justify-content-end align-items-center"
+          >
+            <div class="col col-md-4 px-0 input-control-email">
               <input
                 type="email"
                 class="input form-control"
                 formControlName="email"
                 placeholder="Email"
               />
+              <div
+                *ngIf="email?.touched && email?.errors"
+                class="error-content-email"
+              >
+                <div class="errors" *ngIf="email?.errors?.['required']">
+                  Email is required.
+                </div>
+                <div class="errors" *ngIf="email?.errors?.['pattern']">
+                  Invalid email
+                </div>
+              </div>
             </div>
-            <div class="col col-md-4 px-0 my-2 my-md-0 mx-0 mx-md-2">
+            <div
+              class="col col-md-4 px-0 my-2 my-md-0 mx-0 mx-md-2 input-control-password"
+            >
               <input
                 type="password"
                 class="input form-control"
                 formControlName="password"
                 placeholder="Password"
               />
+              <div
+                *ngIf="password?.touched && password?.errors"
+                class="error-content-password"
+              >
+                <div class="errors" *ngIf="password?.errors?.['required']">
+                  Password is required.
+                </div>
+                <div class="errors" *ngIf="password?.errors?.['pattern']">
+                  Invalid password
+                </div>
+              </div>
             </div>
             <div class="col col-md-2 px-0">
               <button
+                [disabled]="form.invalid"
                 type="button"
                 class="btn button bg-red"
                 (click)="onSubmit()"
               >
-                Login / Register
-              </button>
-
-              <button
-                type="button"
-                class="btn button bg-red"
-                routerLink="/share"
-                [ngClass]="{'d-none': urlActive === '/share'}"
-              >
-                Share a movie
+                <div class="d-flex justify-content-center align-items-center">
+                  <div
+                    class="spinner-grow text-primary"
+                    role="status"
+                    *ngIf="isLoading$ | async"
+                  >
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                  <div>Login / Register</div>
+                </div>
               </button>
             </div>
           </div>
@@ -59,3 +93,20 @@
     </div>
   </nav>
 </div>
+
+<ng-template #login>
+  <div class="d-flex align-items-center">
+    <div class="user me-4">Welcome {{ user?.email }}</div>
+    <button
+      type="button"
+      class="btn button bg-red me-4"
+      routerLink="/share"
+      [ngClass]="{ 'd-none': urlActive === '/share' }"
+    >
+      Share a movie
+    </button>
+    <button type="button" class="btn button button-logout" (click)="onLogout()">
+      Logout
+    </button>
+  </div>
+</ng-template>

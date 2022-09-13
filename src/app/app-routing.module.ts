@@ -17,7 +17,7 @@ const routes: Routes = [
       import('./videos/videos.module').then((m) => m.VideosModule),
   },
   
-  { path: '', redirectTo: 'top', pathMatch: 'prefix' },
+  // { path: '', redirectTo: 'top', pathMatch: 'prefix' },
   { path: '**', component: PageNotFoundComponent },
 ];
 

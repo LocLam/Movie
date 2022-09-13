@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-import { Video } from '../../models/video.model';
+import { User, Video } from '../../models/video.model';
 
 export const getVideos = createAction('[VIDEOS] Get Videos');
 
@@ -16,7 +16,7 @@ export const getVideosFail = createAction(
 
 export const shareVideo = createAction(
   '[VIDEOS] Share Videos',
-  props<{ urlId: string }>()
+  props<{ urlId: string, user: User }>()
 );
 
 export const shareVideoSuccess = createAction('[VIDEOS] Share Videos Success',   props<{ message: string }>());
