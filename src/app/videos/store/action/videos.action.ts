@@ -40,3 +40,7 @@ export const getVideosYTFail = createAction(
   '[VIDEOS] Get Videos YT Fail',
   props<{ error: any }>()
 );
+
+export const resetMessageShareVideo = createAction(
+  '[VIDEOS] Reset Message Share Video',
+);

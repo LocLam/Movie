@@ -42,8 +42,6 @@ export class VideoService {
   }
 
   shareVideo(data: any ): Observable<any> {
-    console.log('data', data);
-    
     const documents = addDoc(collection(this.firestoreDB, this.collectionName), {
       urlId: data.urlId,
       sharedBy: data.user.email,

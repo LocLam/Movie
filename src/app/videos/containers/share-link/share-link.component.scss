@@ -1,7 +1,16 @@
 .card {
   width: 50%;
-  margin: 0 auto;
+  margin: 2rem auto;
 }
+
+.card-content{
+  margin-top: 10rem;
+}
+
+.message{
+  margin-top: 8rem;
+}
+
 .notify {
   width: 59%;
   margin: 1rem auto;
@@ -14,6 +23,9 @@
 @media only screen and (max-width: 992px) {
   .card {
     width: 80%;
+  }
+  .notify {
+    width: 85%;
   }
 }
 @media only screen and (max-width: 576px) {
@@ -71,7 +83,7 @@
 
 .text-primary {
   color: var(--color-red);
-  width: 20px;
-  height: 20px;
+  width: 14px;
+  height: 14px;
   margin-right: 0.5rem;
 }

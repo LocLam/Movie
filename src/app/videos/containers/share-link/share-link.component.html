@@ -1,4 +1,4 @@
-<div class="container" *ngIf="message$ | async">
+<div class="container message" *ngIf="message$ | async">
   <div
     class="alert alert-success notify d-flex justify-content-bettween align-items-center alert-dismissible"
     role="alert"
@@ -12,7 +12,7 @@
     ></button>
   </div>
 </div>
-<div class="card d-flex justify-content-center align-items-center">
+<div class="card d-flex justify-content-center align-items-center" [ngClass]="{'card-content':  !(message$ | async)}">
   <div class="card-body">
     <div class="title mb-4">Share a Youtube movie</div>
     <form [formGroup]="form" class="container">
@@ -39,7 +39,7 @@
         >
           <div class="d-flex justify-content-center align-items-center">
             <div
-              class="spinner-grow text-primary"
+              class="spinner-border text-primary"
               role="status"
               *ngIf="isLoading$ | async"
             >

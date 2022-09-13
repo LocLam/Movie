@@ -2,14 +2,13 @@ import { Injectable } from '@angular/core';
 
 import { of } from 'rxjs';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, mergeMap, catchError, tap } from 'rxjs/operators';
+import { map, mergeMap, catchError } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+
+import { User } from 'src/app/videos/models/video.model';
 
 import * as AuthActions from '../action';
-
-import { Store } from '@ngrx/store';
 import { AuthService } from '../../service/auth.service';
-import { AngularFirestoreDocument } from '@angular/fire/compat/firestore';
-import { User } from 'src/app/videos/models/video.model';
 
 @Injectable()
 export class AuthEffects {
@@ -44,10 +43,8 @@ export class AuthEffects {
       ofType(AuthActions.signUp),
       mergeMap((action: any) =>
         this.authService.signUp(action.user.email, action.user.password).pipe(
-          map((response: any) => {
-            // console.log('response', response);
+          map(() => {
             this.setDataToLocalStorage(action.user);
-
             return AuthActions.signUpSuccess({ user: action.user });
           }),
           catchError((error) => {

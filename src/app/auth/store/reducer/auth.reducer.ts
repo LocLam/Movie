@@ -1,7 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
 
-import * as AuthAction from '../action';
 import { User } from 'src/app/videos/models/video.model';
+
+import * as AuthAction from '../action';
 
 export interface AuthState {
   user: User | null;

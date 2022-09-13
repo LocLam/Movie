@@ -1,5 +1,8 @@
-<div class="container mb-5">
-  <div class="row" *ngIf="!((isLoading$ | async) && (isLoadingYT$ | async)); else loading">
+<div class="container pb-5">
+  <div
+    class="row"
+    *ngIf="!((isLoading$ | async) && (isLoadingYT$ | async)); else loading"
+  >
     <div class="col col-12" *ngFor="let video of videos">
       <app-video [video]="video"></app-video>
     </div>
@@ -10,4 +13,3 @@
     <span class="visually-hidden">Loading...</span>
   </div>
 </ng-template>
-

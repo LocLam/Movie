@@ -1,28 +1,32 @@
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col col-lg-4">
+<div class="mt-5 container">
+  <div class="row">
+    <div class="col col-lg-6">
+    <div class='iframe-content'>
       <iframe
-        class="iframe"
-        allowfullscreen
-        [src]="'//www.youtube.com/embed/' + video?.id | safe"
-      ></iframe>
+      class="iframe"
+      allowfullscreen
+      [src]="'//www.youtube.com/embed/' + video?.id | safe"
+    ></iframe>
     </div>
-    <div class="col col-lg-6 mt-2 mt-lg-0 ml-lg-2">
+    </div>
+    <div class="col col-sm-8 col-lg-5 mt-2 mt-lg-0 ml-lg-2">
       <h4 class="title">{{ video.snippet.title }}</h4>
-      <div class="share-by d-flex flex-row ">
+      <div class="share-by d-flex flex-row">
         <div class="shared-by-video pe-2">Shared by:</div>
         <div class="shared-by-video">{{ video?.sharedBy }}</div>
       </div>
       <div class="d-flex flex-row align-items-center mt-2">
-        <div class='reaction'><strong>113</strong><i class="fa-solid fa-thumbs-up ms-3"></i></div>
-        <div class='ms-5 reaction'><strong>0</strong> <i class="fa-solid fa-thumbs-down ms-3 pt-1"></i></div>
+        <div class="reaction">
+          <strong>113</strong><i class="fa-solid fa-thumbs-up ms-3"></i>
+        </div>
+        <div class="ms-5 reaction">
+          <strong>0</strong> <i class="fa-solid fa-thumbs-down ms-3 pt-1"></i>
+        </div>
       </div>
       <div class="share-by mt-2">
         <div class="shared-by-video title-content">Description:</div>
         <div class="description">{{ video?.snippet.description }}</div>
       </div>
-
-      date: {{video?.date.toDate() | date: 'medium' }}
     </div>
   </div>
 </div>

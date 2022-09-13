@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { containers } from './containers';
@@ -11,6 +11,6 @@ import { SafePipe } from './pipes/safe.pipe';
 @NgModule({
   declarations: [containers, components, SafePipe,],
   imports: [CommonModule, VideoRoutingModule, ReactiveFormsModule, FormsModule ],
-  providers: [VideoService],
+  providers: [VideoService, DatePipe],
 })
 export class VideosModule {}

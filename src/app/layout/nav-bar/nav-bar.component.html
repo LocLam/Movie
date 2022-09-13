@@ -4,6 +4,9 @@
       <div
         class="d-flex justify-content-start align-items-center cursor-event"
         routerLink="/"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
       >
         <img class="logo" src="/assets/movie.png" />
         <a class="d-none d-sm-block navbar-brand">Share Youtube Videos</a>
@@ -22,13 +25,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <form
           [formGroup]="form"
-          class="my-4 sm-my-0 container"
+          class="my-4 sm-my-0 container mx-0"
           *ngIf="!user; else login"
         >
           <div
-            class="row d-flex flex-column flex-md-row justify-content-end align-items-center"
+            class="ow d-flex flex-column flex-md-row  justify-content-start justify-content-lg-end"
           >
-            <div class="col col-md-4 px-0 input-control-email">
+            <div class="col col-md-3 px-0 input-control-email">
               <input
                 type="email"
                 class="input form-control"
@@ -48,7 +51,7 @@
               </div>
             </div>
             <div
-              class="col col-md-4 px-0 my-2 my-md-0 mx-0 mx-md-2 input-control-password"
+              class="col col-md-3 px-0 my-2 my-md-0 mx-0 mx-md-2 input-control-password"
             >
               <input
                 type="password"
@@ -68,7 +71,7 @@
                 </div>
               </div>
             </div>
-            <div class="col col-md-2 px-0">
+            <div class="col col-md-2 px-0 mt-4 mt-sm-0">
               <button
                 [disabled]="form.invalid"
                 type="button"
@@ -77,7 +80,7 @@
               >
                 <div class="d-flex justify-content-center align-items-center">
                   <div
-                    class="spinner-grow text-primary"
+                    class="spinner-border text-primary"
                     role="status"
                     *ngIf="isLoading$ | async"
                   >
@@ -95,17 +98,29 @@
 </div>
 
 <ng-template #login>
-  <div class="d-flex align-items-center">
+  <div class="user-content mb-4 mb-lg-0">
     <div class="user me-4">Welcome {{ user?.email }}</div>
     <button
       type="button"
-      class="btn button bg-red me-4"
+      class="btn button bg-red me-4 my-2 my-md-0"
       routerLink="/share"
       [ngClass]="{ 'd-none': urlActive === '/share' }"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
     >
       Share a movie
     </button>
-    <button type="button" class="btn button button-logout" (click)="onLogout()">
+    <button
+      type="button"
+      class="btn button button-logout mt-2 mt-lg-0"
+      (click)="onLogout()"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+    >
       Logout
     </button>
   </div>

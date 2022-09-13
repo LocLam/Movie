@@ -68,5 +68,10 @@ export const videoReducer = createReducer(
 
   on(VideoActions.shareVideoFail, (state) => {
     return { ...state, isLoading: false, messageShareVideo: '' };
-  })
+  }),
+
+  
+  on(VideoActions.resetMessageShareVideo, (state) => {
+    return { ...state, messageShareVideo: '' };
+  }),
 );

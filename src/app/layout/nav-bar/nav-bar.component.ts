@@ -16,6 +16,7 @@ import {
   selectUser,
   selectUsers,
 } from 'src/app/auth/store/selector/auth.selector';
+import { resetMessageShareVideo } from 'src/app/videos/store/action';
 
 @Component({
   selector: 'app-nav-bar',
@@ -79,7 +80,6 @@ export class NavBarComponent implements OnInit {
       email: this.form.value.email,
       password: this.form.value.password,
     };
-    console.log('user form', user);
     const userSelected = this.users.find(
       (item: User) => item.email === user.email
     );
@@ -101,7 +101,6 @@ export class NavBarComponent implements OnInit {
     let user: any = localStorage.getItem('user');
     if (user) {
       this.user = JSON.parse(user);
-      console.log('user', this.user);
       this.store.dispatch(signIn({ user: this.user }));
     }
   }
@@ -109,5 +108,6 @@ export class NavBarComponent implements OnInit {
   onLogout() {
     localStorage.removeItem('user');
     this.store.dispatch(signOut());
+    this.store.dispatch(resetMessageShareVideo());
   }
 }

@@ -38,3 +38,15 @@
   font-size: 13px;
   color: var(--color-red);
 }
+
+.iframe-content {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media only screen and (max-width: 992px) {
+  .iframe-content {
+    display: flex;
+    justify-content: start;
+  }
+}
