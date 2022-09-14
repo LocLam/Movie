@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 
 import { select, Store } from '@ngrx/store';
 
@@ -26,16 +25,13 @@ export class ShareLinkComponent implements OnInit, OnDestroy {
   urlPattern = '^(http(s)?://)?((w){3}.)?youtu(be|.be)?(.com)?/.+';
   form!: FormGroup;
   user!: any;
+  isNotLoggedIn = false;
 
   get url() {
     return this.form.get('url');
   }
-  
-  constructor(
-    private store: Store,
-    private fb: FormBuilder,
-    private router: Router
-  ) {
+
+  constructor(private store: Store, private fb: FormBuilder) {
     this.buildForm();
   }
 
@@ -53,11 +49,14 @@ export class ShareLinkComponent implements OnInit, OnDestroy {
 
   onShare() {
     this.store.dispatch(resetMessageShareVideo());
+
     if (!this.user) {
-      alert('Please login before sharing the video!!!');
+      this.isNotLoggedIn = true;
       return;
     }
-    const urlId: any = this.youtube_parser(this.form.value.url);
+
+    this.isNotLoggedIn = false;
+    const urlId: string = this.youtube_parser(this.form.value.url);
     if (urlId) {
       this.store.dispatch(shareVideo({ urlId, user: this.user }));
     }

@@ -1,7 +1,8 @@
-<div class="container message" *ngIf="message$ | async">
+<div class="container message">
   <div
     class="alert alert-success notify d-flex justify-content-bettween align-items-center alert-dismissible"
     role="alert"
+    *ngIf="message$ | async"
   >
     <div>{{ message$ | async }}</div>
     <button
@@ -11,8 +12,26 @@
       aria-label="Close"
     ></button>
   </div>
+
+  <div
+    *ngIf="isNotLoggedIn"
+    class="alert alert-danger notify d-flex justify-content-bettween align-items-center alert-dismissible"
+    role="alert"
+  >
+    <div>Please login!</div>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
 </div>
-<div class="card d-flex justify-content-center align-items-center" [ngClass]="{'card-content':  !(message$ | async)}">
+
+<div
+  class="card d-flex justify-content-center align-items-center"
+  [ngClass]="{ 'card-content': !(message$ | async) }"
+>
   <div class="card-body">
     <div class="title mb-4">Share a Youtube movie</div>
     <form [formGroup]="form" class="container">

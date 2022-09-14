@@ -169,7 +169,7 @@ $jackpot-white: var(--color-white);
 @media only screen and (max-width: 768px) {
   .user-content {
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     flex-direction: column;
   }
 }

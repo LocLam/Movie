@@ -26,6 +26,7 @@
         <form
           [formGroup]="form"
           class="my-4 sm-my-0 container mx-0"
+          (submit)="onSubmit()"
           *ngIf="!user; else login"
         >
           <div
@@ -42,10 +43,10 @@
                 *ngIf="email?.touched && email?.errors"
                 class="error-content-email"
               >
-                <div class="errors" *ngIf="email?.errors?.['required']">
+                <div class="errors text-white" *ngIf="email?.errors?.['required']">
                   Email is required.
                 </div>
-                <div class="errors" *ngIf="email?.errors?.['pattern']">
+                <div class="errors text-white" *ngIf="email?.errors?.['pattern']">
                   Invalid email
                 </div>
               </div>
@@ -63,10 +64,10 @@
                 *ngIf="password?.touched && password?.errors"
                 class="error-content-password"
               >
-                <div class="errors" *ngIf="password?.errors?.['required']">
+                <div class="errors text-white" *ngIf="password?.errors?.['required']">
                   Password is required.
                 </div>
-                <div class="errors" *ngIf="password?.errors?.['pattern']">
+                <div class="errors text-white" *ngIf="password?.errors?.['pattern']">
                   Invalid password
                 </div>
               </div>
@@ -74,7 +75,7 @@
             <div class="col col-md-2 px-0 mt-4 mt-sm-0">
               <button
                 [disabled]="form.invalid"
-                type="button"
+                type="submit"
                 class="btn button bg-red"
                 (click)="onSubmit()"
               >
@@ -114,7 +115,7 @@
     </button>
     <button
       type="button"
-      class="btn button button-logout mt-2 mt-lg-0"
+      class="btn button button-logout mt-2 mt-md-0"
       (click)="onLogout()"
       data-bs-toggle="collapse"
       data-bs-target="#navbarSupportedContent"

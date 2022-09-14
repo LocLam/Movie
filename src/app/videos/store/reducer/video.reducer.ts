@@ -23,7 +23,12 @@ export const videoReducer = createReducer(
   initialState,
 
   on(VideoActions.getVideos, (state) => {
-    return { ...state, isLoading: true };
+    return {
+      ...state,
+      isLoading: true,
+      videos: [],
+      videosYT: [],
+    };
   }),
 
   on(VideoActions.getVideosSuccess, (state, action) => {
@@ -70,8 +75,7 @@ export const videoReducer = createReducer(
     return { ...state, isLoading: false, messageShareVideo: '' };
   }),
 
-  
   on(VideoActions.resetMessageShareVideo, (state) => {
     return { ...state, messageShareVideo: '' };
-  }),
+  })
 );

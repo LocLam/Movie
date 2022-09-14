@@ -12,7 +12,7 @@ export class YoutubeService {
 
   getVideosForChanel(videoIds?: Array<string>): Observable<Object> {
     let params = new HttpParams();
-    params = params.append('part', 'snippet, player, contentDetails');
+    params = params.append('part', 'snippet, player, contentDetails, statistics');
 
     videoIds?.forEach((id) => {
       params = params.append('id', id);

@@ -34,6 +34,14 @@
   }
 }
 
+@media only screen and (max-width: 400px) {
+  .iframe {
+    width: 370px;
+    height: 180px;
+  }
+}
+
+
 .reaction {
   font-size: 13px;
   color: var(--color-red);
@@ -47,6 +55,6 @@
 @media only screen and (max-width: 992px) {
   .iframe-content {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
   }
 }

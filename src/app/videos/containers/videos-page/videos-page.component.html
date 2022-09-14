@@ -1,7 +1,7 @@
 <div class="container pb-5">
   <div
     class="row"
-    *ngIf="!((isLoading$ | async) && (isLoadingYT$ | async)); else loading"
+    *ngIf="!((isLoading$ | async) || (isLoadingYT$ | async)); else loading"
   >
     <div class="col col-12" *ngFor="let video of videos">
       <app-video [video]="video"></app-video>
@@ -9,7 +9,10 @@
   </div>
 </div>
 <ng-template #loading>
-  <div class="spinner-border text-danger" role="status">
-    <span class="visually-hidden">Loading...</span>
+  <div class='d-flex justify-content-center align-items-center mt-5'>
+    <div class="spinner-border color-red" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
   </div>
+
 </ng-template>
